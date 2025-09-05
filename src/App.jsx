@@ -1,12 +1,30 @@
 import { useState } from 'react'
-import './App.css'
-import QuantitySelector from './QuantitySelector';
-import ColorSelector from './ColorSelector';
-import ImageDots from './ImageDots';
-import StarSelector from './StarSelector';
-import ProductDetails from './ProductDetails';
+import QuantitySelector from './components/quantity-selector/quantity-selector.components';
+import ColorSelector from './components/color-selector/color-selector.components';
+import ImageDots from './components/image-dot/image-dots.components';
+import StarSelector from './components/star-selector/star-selector.components';
+import ProductDetails from './components/product-details/product-details.components';
 
-
+import {
+    ProductCardContainer,
+    ProductCard,
+    ProductCardLeft,
+    ProductIdTag,
+    ProductImage,
+    ProductCardRight,
+    ProductInfo,
+    ProductCategory,
+    ProductName,
+    ProductBrand,
+    ProductSales,
+    ProductPrice,
+    Price,
+    Dollar,
+    ProductOptions,
+    GroupButtons,
+    ButtonTop,
+    ButtonDown,
+}from './App.style'
 
 const productPictures = [
     '/chiar-image/06.jpeg',
@@ -22,63 +40,61 @@ function App() {
   
 
   return (
-    <div className="product-card">
-            {/* product-card-left */}
-            <div className="product-card-left">
-                <div className="product-id-tag">RT34FY</div>
+    <ProductCardContainer>
+        <ProductCard>
+            <ProductCardLeft>
+                <ProductIdTag>RT34FY</ProductIdTag>
 
-                <div className="product-image">
+                <ProductImage>
                     <img src={productPictures[currentImageIndex]} alt="Modern Chair"/>   
-                </div>
+                </ProductImage>
 
                 {/* 圖片點點 */}
                 <ImageDots 
                 activeDot={currentImageIndex}
                 dotClick={setCurrentImageIndex}
                 />
-            </div>
+            </ProductCardLeft>
 
-            {/* product-card-right */}
-            <div className="product-card-right">
-                <div className="product-info">
-                    <div className="product-category">CHAIRS</div>
-                    <h1 className="product-name">Modern Chair</h1>
-                    <p className="product-brand">Tinner's House</p>
+            <ProductCardRight>
+                <ProductInfo>
+                    <ProductCategory>CHAIRS</ProductCategory>
+                    <ProductName>Modern Chair</ProductName>
+                    <ProductBrand>Tinner's House</ProductBrand>
 
-                    <div className="product-sales">
-                        <div className="product-price">
-                            <img src="/public/icon/i.icon.dollar.svg" alt="icon-dollar"/>
-                            <span className="price">420</span>
-                        </div>
+                    <ProductSales>
+                        <ProductPrice>
+                            <Dollar/>
+                            <Price>420</Price>
+                        </ProductPrice>
 
                         {/* 星星評分 */}
-                        <StarSelector />
-                    </div>
+                        <StarSelector/>
+                    </ProductSales>
                         
-                </div>
+                </ProductInfo>
 
                 {/* 資訊欄 */}
                 <ProductDetails />
 
-                {/* product-options */}
-                <div className="product-options">
-                    {/* color */}
+                <ProductOptions>
+
                     <ColorSelector 
                     onColorSelect={setCurrentImageIndex} 
                     activeColor={currentImageIndex}
                     />
 
-                    {/* quantity and price */}
                     <QuantitySelector />
-                </div>
+                </ProductOptions>
 
-                <div className="group-buttons">
-                    <button className="btn top">ADD TO MY WISHLIST</button>
-                    <button className="btn down">ADD TO CART</button>
-                </div>
+                <GroupButtons>
+                    <ButtonTop>ADD TO MY WISHLIST</ButtonTop>
+                    <ButtonDown>ADD TO CART</ButtonDown>
+                </GroupButtons>
         
-            </div>
-        </div>
+            </ProductCardRight>
+        </ProductCard>
+    </ProductCardContainer>
   )
 }
 

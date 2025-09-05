@@ -1,13 +1,19 @@
 import React from 'react';
+import {
+    ImageDotContainer, 
+    ButtonDot, 
+    ButtonDotActive,
+}from './image-dots.style';
+
 
 const Dot = ({active=false, onClick}) => {
-    if(active) return <span className="dot dot-active"></span>;
-    return <span className="dot" onClick={onClick}></span>
+    if(active) return <ButtonDotActive ></ButtonDotActive>;
+    return <ButtonDot onClick={onClick}></ButtonDot>
 }
 
 const ImageDots = ({activeDot, dotClick}) => {
     return (
-        <div className="image-dots">
+        <ImageDotContainer>
             {Array(6)
             .fill('')
             .map((item, key) => (
@@ -17,7 +23,7 @@ const ImageDots = ({activeDot, dotClick}) => {
                 onClick={() => dotClick(key)}
                 />
             ))}
-        </div>
+        </ImageDotContainer>
     )
 }
 

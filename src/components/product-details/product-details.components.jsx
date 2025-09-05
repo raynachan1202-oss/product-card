@@ -1,6 +1,12 @@
 // src/ProductDetails.jsx
 import React, { useState } from 'react';
-
+import {
+    ProductTabDetails,
+    TabItems,
+    TabName,
+    TabText,
+    ReadMore,
+}from './product-details.style';
 const tabData = [
     {
         name: 'DESCRIPTION', 
@@ -46,34 +52,30 @@ const ProductDetails = () => {
     };
 
     return (
-        <div className="product-tab-details">
-            <div className="tab-items">
-                {tabData.map((tab, index) => {
-                    let className = 'tab-name';
-                    if (index === tabActive) {
-                        className += ' tab-active';
-                    }
-                    return(
-                        <span
-                            key={index}
-                            className={className}
-                            onClick={() => {
-                                setTabActive(index);
-                                setExpanded(false);
-                            }}
-                        >{tab.name}</span> 
-                    );
-                })}
-            </div>
+        <ProductTabDetails>
+            <TabItems>
+                {tabData.map((tab, index) => (
+                    <TabName
+                        key={index}
+                        $active={index === tabActive}
+                        onClick={() => {
+                            setTabActive(index);
+                            setExpanded(false);
+                        }}
+                    >
+                        {tab.name}
+                    </TabName>
+                ))}
+            </TabItems>
 
-            <p className="tab-text">
+            <TabText>
                 {displayedContent}
-            </p>
+            </TabText>
 
-            <span className="read-more" onClick={toggleExpand}>
+            <ReadMore onClick={toggleExpand}>
                 {buttonText}
-            </span>
-        </div>
+            </ReadMore>
+        </ProductTabDetails>
     );
 };
 

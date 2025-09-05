@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect} from 'react'
+import { StarContainer}from './star-selector.style'
 
 const starEmpty = '/icon/i.icon.star.svg';
 const starActive = '/icon/i.icon.star.active.svg';
@@ -38,9 +39,9 @@ const StarSelector = () => {
             )
         }
         return (
-            <div className="star-container">
+            <StarContainer>
                 {star}
-            </div>
+            </StarContainer>
         )
 };
 
